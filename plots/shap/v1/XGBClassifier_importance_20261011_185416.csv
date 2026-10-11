@@ -1,0 +1,17 @@
+Feature,Mean_Absolute_SHAP
+tenure_per_age,0.015728930340630307
+support_calls_per_tenure,0.0072405063921905585
+contract_length,0.006436090395667431
+subscription_type,0.003992885891321569
+support_usage_ratio,0.002081269678626598
+usage_per_tenure,0.0018991330028548842
+churn_risk_signals,0.0015782518815357775
+support_calls,0.0005741259584560315
+total_spend,0.0
+usage_frequency,0.0
+tenure,0.0
+age,0.0
+gender_Male,0.0
+last_interaction,0.0
+spend_per_tenure,0.0
+customer_friction,0.0

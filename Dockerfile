@@ -19,4 +19,5 @@ RUN pip install --no-cache-dir .
 # expose ports for FastAPI and Gradio
 EXPOSE 8000 7860
 
-CMD ["sh", "-c", "uvicorn api.api:app --host 0.0.0.0 --port 8000 & python -m app.gradio"]
+# run uvicorn initialization and gradio side-by-side
+CMD ["sh", "-c", "python -m api.uvicorn_init & python -m app.gradio"]

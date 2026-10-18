@@ -10,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from api.database.schema import UserAuth, ReqSchema, Batch, Label
-from api.database.database import register_user, verify_user
+from api.database.database import register_user, verify_user, init_db
 from api.middleware.auth import auth, create_access_token
 from api.middleware.train import verify_and_get_model, TRAINING_STATE, state_lock, handle_train_err
 from api.controller.retrain import run_monitoring
@@ -20,7 +20,13 @@ from src.v1.config import ACTIVE, HOST, PORT
 from src.v1.explain import explain_model
 from src.v1.evaluate import eval_plots
 
-app = FastAPI(title="Churn API")
+# for initializing database
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+
+app = FastAPI(title="Churn API", lifespan=lifespan)
 
 # dynamically checking current path
 current_path = Path(__file__).resolve()
